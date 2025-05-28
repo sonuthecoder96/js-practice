@@ -41,4 +41,49 @@
   console.log("C",myarr);
 
 
+  //merging two array create problem let see how
+  const marvel_hero = ['superman','batman']
+  const desi_hero = ['shaktiman','mightyraju']
+
+  marvel_hero.push(desi_hero)
+
+  console.log(marvel_hero)//it treated whole array as one elemnt
+  //same goes with concatination
+
+  marvel_hero.pop()
+
+  console.log(desi_hero+marvel_hero)
+
+  const allheros =  marvel_hero.concat(desi_hero);
+
+  //concat return new array after merging
+
+  console.log(allheros)
+
+  //also otherway of doing it is spread operator
+
+  const all2hero = [...marvel_hero,...desi_hero]
+
+  console.log(all2hero)
+
+
+  //if there are many array in array to make it normal we use flat in it we give abouth depth until which
+
+  const t = [1,2,3,[2,3,[1,3]]];
+  const flatt = t.flat(Infinity)
+  console.log(flatt)
+
+
+  console.log(Array.isArray("sonu"))//tells array or not
+  console.log(Array.from("sonu"))//make array from given type
+  console.log(Array.from({name:"sonu"}))//intresting as in it empty array is returned because we dont specify we have make array of keys or value
+
+  let x = 1
+  let y = 2
+  let z = 3
+
+  //make array from elemnts return new array from elements
+
+  console.log(Array.of(x,y,z));
+
 
