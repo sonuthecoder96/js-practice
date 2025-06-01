@@ -25,7 +25,19 @@ const myobject = {
     'game1':'gta6'
 }
 //object is not iteratble by foroff loop
-for (const i of myobject) {
+// for (const i of myobject) {
 
     
+// }
+
+const myObject = {
+    js:'javascript',
+    cpp:'c++',
+    python:'python'
 }
+
+//for in loop
+for (const key in myObject) {
+    console.log(`${key}->${myObject[key]}`)   
+}
+
