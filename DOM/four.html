@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit and Remove Elements in DOM</title>
+</head>
+<body style="background-color: black; color: azure;">
+    <ul class="language">
+        <li>javascript</li>
+    </ul>
+
+    
+</body>
+<script>
+    function add_language(langName){
+        const liitem = document.createElement('li');
+        liitem.innerHTML = `${langName}`//it traverse whole tree which is not good so we optimiseit
+        
+        
+        document.querySelector('.language').appendChild(liitem)
+        
+
+
+    }
+    function opti_add_language(langName){
+        const liitem = document.createElement('li');
+        liitem.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(liitem)
+        
+        
+        
+        
+        
+
+
+    }
+    add_language("python")
+    add_language("cpp")
+    opti_add_language("java")
+
+    //EDIT
+    const secondlanng = document.querySelector("li:nth-child(2)")
+    //seconlanng.innerHTML = "Mojo";//but still same problem as above
+    const newli = document.createElement('li')
+    newli.textContent = "mojo"
+    secondlanng.replaceWith(newli)
+    //another way
+    const firstlang = document.querySelector("li:first-child")
+    firstlang.outerHTML = '<li>Typescript</li>'
+
+    //REMOVE
+    const removelang = document.querySelector('li:last-child')
+    removelang.remove()
+
+
+
+</script>
+</html>
