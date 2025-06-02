@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur code</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    setTimeout(function(){
+        console.log("sonu")
+    },2000)
+
+    const changText = function(){
+        document.querySelector('h1').innerHTML = "best Js series"
+    }
+    const changeMe = setTimeout(changText,2000)//changes text after 2sec
+    //clearTimeout(changeMe) used to remove set timeout
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout((changeMe))//now onclicking on stop it stops settimeout
+        console.log("stopped")
+    })
+
+</script>
+</html>
