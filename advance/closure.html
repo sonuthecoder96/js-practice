@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clousre and lexical scoping</title>
+</head>
+<body style="background-color: black;">
+    <button id="orange">orange</button>
+    <button id="green">green</button>
+    
+</body>
+<script>
+    //lexical scoping
+    // function init() {
+    //     let name = "Mozilla"; // name is a local variable created by init
+    //     function displayName() {
+    //          // displayName() is the inner function, that forms a closure
+    //          console.log(name); // use variable declared in the parent function
+    //     }
+    //     displayName();
+    // }
+    // init();
+    //closure
+
+    function makeFunc() {
+        const name = "Mozilla";
+        function displayName() {
+            console.log(name);
+        }
+        return displayName;
+    }
+
+    const myFunc = makeFunc();
+    myFunc();
+
+
+    function clickhandler(color){
+        //document.body.style.backgroundColor = `${color}`;
+        return function(){
+            document.body.style.backgroundColor = `${color}`//now it worked a we know due to lexical scoping whole lexical scope is get passes
+        }
+
+    }
+    document.getElementById('orange').onclick = clickhandler("orange")
+    //the above piece of code not work it changes color wihou click we have to give only function but we get them executed thats why we have to change function 
+</script>
+</html>
