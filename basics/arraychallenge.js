@@ -13,7 +13,13 @@ let citypop = {
     "delhi": 22233,
     "up" : 200000
 }
-for (const  in citypop) {
-    console.log(
+let copy = {}
+//creating copy of object using loop
+for (const city in citypop) {
+    console.log(citypop[city]);
+    copy[city] = citypop[city]
     
 }
+console.log(copy)
+
+
