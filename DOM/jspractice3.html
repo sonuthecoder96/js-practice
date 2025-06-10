@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Practice</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html,body{
+        width: 100%;
+        height: 100%;
+        background-color: black;
+    }
+    #center{
+        width: 60%;
+        height: 60%;
+        background-color: red;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+
+    }
+    .imagediv{
+        position: absolute;
+        width: 200px;
+        height: 270px;
+        
+        overflow: hidden;
+    }
+    .imagediv img{
+        transform: translateY(100%);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+</style>
+<body>
+    <div id="center">
+
+    </div>
+    
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    
+    const throttleFunction =  function throttle(fn, delay) {
+    let t = 0;
+    return function (...args) {
+        let now = Date.now();
+        if (now - t >= delay) {
+            fn.apply(this, args);
+            t = now;
+        }
+    };
+}
+    document.querySelector("#center").addEventListener("mousemove",throttleFunction((dets)=>{
+        //your less repeatation code
+        let div = document.createElement("div");
+        let img = document.createElement("img");
+        img.setAttribute("src","https://images.unsplash.com/photo-1749276873098-7e44bd10575c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+
+        gsap.to(img,{
+            y:"0",
+            ease:Power1,
+            duration:.5,
+
+        })
+        gsap.to(img,{
+            y:"100%",
+            delay:.6,
+            ease:Power1,
+            //duration:.5,
+
+        })
+       
+
+
+        console.log(div)
+        
+        div.style.left = dets.clientX+'px';
+        div.style.top = dets.clientY+'px';
+        div.classList.add("imagediv");
+        div.appendChild(img)
+        document.body.appendChild(div);
+
+        setTimeout(function(){
+          div.remove();
+        },1000)
+
+
+
+},400));
+
+
+</script>
+</html>
